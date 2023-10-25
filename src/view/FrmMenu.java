@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author Programador Evanei Freitas.
  */
 public class FrmMenu extends javax.swing.JFrame {
-    
+
     public static JDesktopPane jDesktopPane_menu;
 
     public FrmMenu() {
@@ -130,6 +130,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem_atualizarEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo.png"))); // NOI18N
         jMenuItem_atualizarEstoque.setText("Atualizar Estoque");
         jMenuItem_atualizarEstoque.setPreferredSize(new java.awt.Dimension(200, 30));
+        jMenuItem_atualizarEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_atualizarEstoqueActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem_atualizarEstoque);
 
         jMenuBar1.add(jMenu2);
@@ -286,8 +291,8 @@ public class FrmMenu extends javax.swing.JFrame {
     private void jMenuItem_gerenciarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gerenciarClientesActionPerformed
         //Código para Chamar Formulário Gerenciamento de Clientes.
         FrmInterGerenciarClientes frmGerenciarClientes = new FrmInterGerenciarClientes();
-         jDesktopPane_menu.add(frmGerenciarClientes);
-         frmGerenciarClientes.setVisible(true);
+        jDesktopPane_menu.add(frmGerenciarClientes);
+        frmGerenciarClientes.setVisible(true);
     }//GEN-LAST:event_jMenuItem_gerenciarClientesActionPerformed
 
     private void jMenuItem_verRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_verRegistroActionPerformed
@@ -306,9 +311,9 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMenuItem_novaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_novaCategoriaActionPerformed
         // Codigo para chamar o formulario categorias.
-         FrmInterCategoria frminterCategoria = new FrmInterCategoria();
-         jDesktopPane_menu.add(frminterCategoria);
-         frminterCategoria.setVisible(true);
+        FrmInterCategoria frminterCategoria = new FrmInterCategoria();
+        jDesktopPane_menu.add(frminterCategoria);
+        frminterCategoria.setVisible(true);
     }//GEN-LAST:event_jMenuItem_novaCategoriaActionPerformed
 
     private void jMenuItem_gerenciarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gerenciarCategoriaActionPerformed
@@ -338,6 +343,13 @@ public class FrmMenu extends javax.swing.JFrame {
         jDesktopPane_menu.add(frmNovoCliente);
         frmNovoCliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem_novoClienteActionPerformed
+
+    private void jMenuItem_atualizarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_atualizarEstoqueActionPerformed
+        //Código para Chamar o Formulário Atualizar Estoque.
+        FrmInterAtualizarEstoque frmatualizarEstoque = new FrmInterAtualizarEstoque();
+        jDesktopPane_menu.add(frmatualizarEstoque);
+        frmatualizarEstoque.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_atualizarEstoqueActionPerformed
 
     /**
      * @param args the command line arguments
