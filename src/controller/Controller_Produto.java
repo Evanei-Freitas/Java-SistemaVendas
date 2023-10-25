@@ -135,4 +135,31 @@ public class Controller_Produto {
 
     }
 
+    /**
+     * *
+     * **********************************************************************
+     * Método para Atualizar Estoque de Produtos.
+     * **********************************************************************
+     */
+    public boolean atualizarEstoqueProduto(Produto objeto, int idProduto) {
+        boolean resposta = false;
+        Connection cn = Conexao.conectar();
+        try {
+            PreparedStatement pst = cn.prepareStatement("Update tb_produto Set quantidade = ?"
+                    + " Where idProduto='" + idProduto + "'");
+            pst.setInt(1, objeto.getQuantidade());
+
+            if (pst.executeUpdate() > 0) {
+                resposta = true;
+            }
+            cn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao tentar Atualizar a quantidade de Produto "
+                    + "no Banco de Dados!" + e.getMessage());
+        }
+
+        return resposta;
+
+    }
+
 }

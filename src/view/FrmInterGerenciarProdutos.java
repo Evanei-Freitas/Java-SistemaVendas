@@ -387,7 +387,9 @@ public class FrmInterGerenciarProdutos extends javax.swing.JInternalFrame {
 
         Connection con = Conexao.conectar();
         DefaultTableModel model = new DefaultTableModel();
-        String sql = "select p.idProduto, p.nome, p.quantidade, p.preco, p.descricao, p.porcentagemIva, c.descricao, p.estado from tb_produto AS p, tb_categoria As c where p.idCategoria = c.idCategoria;";
+        String sql = "select p.idProduto, p.nome, p.quantidade,"
+                + " p.preco, p.descricao, p.porcentagemIva, c.descricao,"
+                + " p.estado from tb_produto AS p, tb_categoria As c where p.idCategoria = c.idCategoria;";
         Statement st;
 
         try {
