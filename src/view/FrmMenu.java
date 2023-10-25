@@ -89,12 +89,22 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem_gerenciarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
         jMenuItem_gerenciarUsuario.setText("Gerenciar Usuarios");
         jMenuItem_gerenciarUsuario.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem_gerenciarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_gerenciarUsuarioActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem_gerenciarUsuario);
 
         jMenuItem_novoUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenuItem_novoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo-cliente.png"))); // NOI18N
         jMenuItem_novoUsuario.setText("Novo Usuario");
         jMenuItem_novoUsuario.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem_novoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_novoUsuarioActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem_novoUsuario);
 
         jMenuBar1.add(jMenu1);
@@ -350,6 +360,18 @@ public class FrmMenu extends javax.swing.JFrame {
         jDesktopPane_menu.add(frmatualizarEstoque);
         frmatualizarEstoque.setVisible(true);
     }//GEN-LAST:event_jMenuItem_atualizarEstoqueActionPerformed
+
+    private void jMenuItem_gerenciarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gerenciarUsuarioActionPerformed
+        //Código para Chamar o Formulário Gerenciamento de Usuario.
+        
+    }//GEN-LAST:event_jMenuItem_gerenciarUsuarioActionPerformed
+
+    private void jMenuItem_novoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_novoUsuarioActionPerformed
+        //Código para Chamar o Formulário de Usuário.
+        FrmInterUsuario frmUsuario = new FrmInterUsuario();
+        jDesktopPane_menu.add(frmUsuario);
+        frmUsuario.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_novoUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

@@ -40,6 +40,9 @@
                   <Dimension value="[180, 30]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_gerenciarUsuarioActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_novoUsuario">
               <Properties>
@@ -54,6 +57,9 @@
                   <Dimension value="[180, 30]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_novoUsuarioActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
