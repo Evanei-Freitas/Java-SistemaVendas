@@ -158,21 +158,26 @@ public class FrmInterGerenciarCategorias extends javax.swing.JInternalFrame {
 
     private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExcluirActionPerformed
         //Código do botão para atualizar Categoria.
-        if (!txt_Descricao.getText().isEmpty()) {
-            Categoria modelCategoria = new Categoria();
-            Controller_Categoria controllerCategoria = new Controller_Categoria();
+        Categoria modelCategoria = new Categoria();
+        Controller_Categoria controllerCategoria = new Controller_Categoria();
+        modelCategoria.setDescricao(txt_Descricao.getText().trim());
 
-            modelCategoria.setDescricao(txt_Descricao.getText().trim());
-            if (!controllerCategoria.excluirDados(idCategoria)) {
-                JOptionPane.showMessageDialog(null, "Categoria Excluida com Sucesso!");
-                txt_Descricao.setText("");
-                this.carregarTabelaCategorias();
-            } else {
-                JOptionPane.showMessageDialog(null, "Erro ao tentar excluir uma categoria!");
-            }
-
+        if (idCategoria == 0) {
+            JOptionPane.showMessageDialog(null, "Selecione a Categoria para ser Excluido!");
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione uma Categoria!");
+
+            //Excluindo Clinete.
+            int excluir = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Excluir a Categoria"
+                    + "?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if (excluir == JOptionPane.YES_OPTION) {
+                if (!controllerCategoria.excluirDados(idCategoria)) {
+                    JOptionPane.showMessageDialog(null, "Categoria Excluido com Sucesso!");
+                    this.carregarTabelaCategorias();
+                    txt_Descricao.setText("");
+                } else {
+                    //JOptionPane.showMessageDialog(null, "Você Cancelou a opção de Excluir o Cliente");
+                }
+            }
         }
 
     }//GEN-LAST:event_jButton_ExcluirActionPerformed
