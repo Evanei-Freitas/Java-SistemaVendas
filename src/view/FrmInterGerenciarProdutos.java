@@ -288,15 +288,20 @@ public class FrmInterGerenciarProdutos extends javax.swing.JInternalFrame {
         //Código do botão para atualizar Produto.
         Controller_Produto controllerProduto = new Controller_Produto();
         if (idProduto == 0) {
-            JOptionPane.showMessageDialog(null, "Selecione um Produto!");
+            JOptionPane.showMessageDialog(null, "Selecione o Produto para ser Excluido!");
         } else {
-            if (!controllerProduto.excluirProduto(idProduto)) {
-                JOptionPane.showMessageDialog(null, "Produto Excluido com Sucesso!");
-                this.carregarTabelaProdutos();
-                this.carregarComboCategorias();
-                this.limpar();
-            } else {
-                JOptionPane.showMessageDialog(null, "Erro ao tentar excluir o produto!");
+
+            //Excluindo Clinete.
+            int excluir = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Excluir o Produto"
+                    + "?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if (excluir == JOptionPane.YES_OPTION) {
+                if (!controllerProduto.excluirProduto(idProduto)) {
+                    JOptionPane.showMessageDialog(null, "Produto Excluido com Sucesso!");
+                    this.carregarTabelaProdutos();
+                    this.limpar();
+                } else {
+                    //JOptionPane.showMessageDialog(null, "Você Cancelou a opção de Excluir o Cliente");
+                }
             }
         }
 
