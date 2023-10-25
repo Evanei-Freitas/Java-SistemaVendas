@@ -1,6 +1,20 @@
 package view;
 
+import conexao.Conexao;
+import controller.Controller_Produto;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import model.Produto;
+import static view.FrmInterGerenciarCategorias.jTable_Categoria;
+import static view.FrmInterGerenciarProdutos.jTable_produtos;
 
 /**
  *
@@ -8,10 +22,14 @@ import java.awt.Dimension;
  */
 public class FrmInterAtualizarEstoque extends javax.swing.JInternalFrame {
 
+    int idProduto = 0;
+    int quantidade = 0;
+
     public FrmInterAtualizarEstoque() {
         initComponents();
-        this.setSize(new Dimension(900, 500));
+        this.setSize(new Dimension(481, 337));
         this.setTitle("Gerenciar Estoques dos Produtos");
+        this.carregarComboProdutos();
 
     }
 
@@ -26,7 +44,16 @@ public class FrmInterAtualizarEstoque extends javax.swing.JInternalFrame {
 
         jPanel_walppaper = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2_Produto = new javax.swing.JLabel();
+        jLabel3_EstoqueAntigo = new javax.swing.JLabel();
+        jLabel4_EstoqueNovo = new javax.swing.JLabel();
+        jComboBox_Produto = new javax.swing.JComboBox<>();
+        txt_QtdAtual = new javax.swing.JTextField();
+        txt_QtdNova = new javax.swing.JTextField();
+        jButton_AtualizarEstoque = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 102, 102));
         setClosable(true);
         setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -36,17 +63,194 @@ public class FrmInterAtualizarEstoque extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Atualizar Estoque");
-        jPanel_walppaper.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 190, -1));
+        jLabel1.setText("Atualizar Estoque de Produtos ");
+        jPanel_walppaper.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 290, -1));
 
-        getContentPane().add(jPanel_walppaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 470));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Produtos:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2_Produto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2_Produto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2_Produto.setText("Produtos:");
+        jPanel1.add(jLabel2_Produto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 80, -1));
+
+        jLabel3_EstoqueAntigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3_EstoqueAntigo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3_EstoqueAntigo.setText("Estoque Antigo:");
+        jPanel1.add(jLabel3_EstoqueAntigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 130, -1));
+
+        jLabel4_EstoqueNovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4_EstoqueNovo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4_EstoqueNovo.setText("Estoque Novo:");
+        jPanel1.add(jLabel4_EstoqueNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 130, -1));
+
+        jComboBox_Produto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jComboBox_Produto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Produto:", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_Produto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_ProdutoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox_Produto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 200, -1));
+
+        txt_QtdAtual.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txt_QtdAtual.setEnabled(false);
+        jPanel1.add(txt_QtdAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 200, -1));
+
+        txt_QtdNova.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txt_QtdNova, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 200, -1));
+
+        jPanel_walppaper.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 50, 450, 170));
+
+        jButton_AtualizarEstoque.setBackground(new java.awt.Color(0, 102, 51));
+        jButton_AtualizarEstoque.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_AtualizarEstoque.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_AtualizarEstoque.setText("Atualizar Estoque");
+        jButton_AtualizarEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_AtualizarEstoqueActionPerformed(evt);
+            }
+        });
+        jPanel_walppaper.add(jButton_AtualizarEstoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 223, 190, 50));
+
+        getContentPane().add(jPanel_walppaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBox_ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_ProdutoActionPerformed
+        //Código do Botão ComboBox Produtos.
+        this.mostrarEstoque();
+    }//GEN-LAST:event_jComboBox_ProdutoActionPerformed
+
+    private void jButton_AtualizarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AtualizarEstoqueActionPerformed
+        //Código Atualiz o Estoque do Produto.
+
+        //Validação da Seleção do Produto
+        if (!jComboBox_Produto.getSelectedItem().equals("Selecione o Produto:")) {
+            //Validação do Campo Vazio.
+            if (!txt_QtdNova.getText().isEmpty()) {
+                //Validação para que os usuarios só utilizen caracteres numéricos.
+                boolean validacao = validacaoCaracteres(txt_QtdNova.getText().trim());
+                if (validacao == true) {
+                    //Validação se a quantidade é maior que zero.
+                    if (Integer.parseInt(txt_QtdNova.getText()) > 0) {
+
+                        Produto produto = new Produto();
+                        Controller_Produto controllerProduto = new Controller_Produto();
+                        int estoqueAtual = Integer.parseInt(txt_QtdAtual.getText().trim());
+                        int estoqueNovo = Integer.parseInt(txt_QtdNova.getText().trim());
+
+                        estoqueNovo = estoqueAtual + estoqueNovo;
+                        produto.setQuantidade(estoqueNovo);
+                        if (controllerProduto.atualizarEstoqueProduto(produto, idProduto)) {
+                            JOptionPane.showMessageDialog(null, "Estoque atualizado com sucesso!");
+                            jComboBox_Produto.setSelectedItem("Selecione o produto:");
+                            txt_QtdAtual.setText("");
+                            txt_QtdNova.setText("");
+                            this.carregarComboProdutos();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Erro ao tentar atualizar o estoque!");
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "A quantidade não pode ser Zero e nem negativa");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Por favor, digite um número e não uma letra.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Entre com uma nova quantidade para somar com o estoque do Produto!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um Produto!");
+        }
+
+    }//GEN-LAST:event_jButton_AtualizarEstoqueActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_AtualizarEstoque;
+    private javax.swing.JComboBox<String> jComboBox_Produto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2_Produto;
+    private javax.swing.JLabel jLabel3_EstoqueAntigo;
+    private javax.swing.JLabel jLabel4_EstoqueNovo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_walppaper;
+    private javax.swing.JTextField txt_QtdAtual;
+    private javax.swing.JTextField txt_QtdNova;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     ************************************************************************
+     * Método para Carregar Produtos no JComboBox
+     * ***********************************************************************
+     */
+    private void carregarComboProdutos() {
+        Connection cn = Conexao.conectar();
+        String sql = "Select * From tb_produto";
+        Statement stm;
+
+        try {
+            stm = cn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            jComboBox_Produto.removeAllItems();
+            jComboBox_Produto.addItem("Selecione o Produto:");
+
+            while (rs.next()) {
+                jComboBox_Produto.addItem(rs.getString("nome"));
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao tentar carregar o ComboBox Produto!" + e);
+        }
+
+    }
+
+    /**
+     ************************************************************************
+     * Método para mostrar Estoque do produto Selecionado.
+     * ***********************************************************************
+     */
+    private void mostrarEstoque() {
+
+        try {
+            Connection cn = Conexao.conectar();
+            String sql = "Select * From tb_produto Where nome = '" + this.jComboBox_Produto.getSelectedItem() + "'";
+            Statement stm;
+            stm = cn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            if (rs.next()) {
+                idProduto = rs.getInt("idProduto");
+                quantidade = rs.getInt("quantidade");
+                txt_QtdAtual.setText(String.valueOf(quantidade));
+            } else {
+                txt_QtdAtual.setText("");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao tentar obter o Estoque do Produto selecionado!" + e);
+        }
+
+    }
+
+    /**
+     ************************************************************************
+     * Método de Validação de caracteres não numéricos.
+     * ***********************************************************************
+     */
+    private boolean validacaoCaracteres(String valor) {
+        int num;
+        try {
+            num = Integer.parseInt(valor);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 }
