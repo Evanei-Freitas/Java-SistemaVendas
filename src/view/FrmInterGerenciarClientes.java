@@ -229,13 +229,26 @@ public class FrmInterGerenciarClientes extends javax.swing.JInternalFrame {
         if (idCliente == 0) {
             JOptionPane.showMessageDialog(null, "Selecione o Cliente para ser Excluido!");
         } else {
-            if (!controllerCliente.excluirCliente(idCliente)) {
-                JOptionPane.showMessageDialog(null, "Cliente Excluido com Sucesso!");
-                this.limpar();
-            } else {
-                //JOptionPane.showMessageDialog(null, "Erro ao Tentar Excluir o Cliente!");
+
+            //
+            int excluir = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja Excluir o Cliente"
+                    + "?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if (excluir == JOptionPane.YES_OPTION) {
+                if (!controllerCliente.excluirCliente(idCliente)) {
+                    JOptionPane.showMessageDialog(null, "Cliente Excluido com Sucesso!");
+                    this.carregarTabelaCliente();
+                    this.limpar();
+                } else {
+                    //JOptionPane.showMessageDialog(null, "Você Cancelou a opção de Excluir o Cliente");
+                }
             }
 
+//            if (!controllerCliente.excluirCliente(idCliente)) {
+//                JOptionPane.showMessageDialog(null, "Cliente Excluido com Sucesso!");
+//                this.limpar();
+//            } else {
+//                //JOptionPane.showMessageDialog(null, "Erro ao Tentar Excluir o Cliente!");
+//            }
         }
 
     }//GEN-LAST:event_jButton_ExcluirClienteActionPerformed

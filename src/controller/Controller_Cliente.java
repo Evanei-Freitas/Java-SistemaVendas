@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import model.Cliente;
-import model.Produto;
 
 /**
  *
@@ -25,17 +24,17 @@ public class Controller_Cliente {
         boolean resposta = false;
         Connection cn = Conexao.conectar();
         try {
-            PreparedStatement consulta = cn.prepareStatement("Insert Into tb_cliente Values(?,?,?,?,?,?,?,?)");
-            consulta.setInt(1, 0);//id(Auto_Incremmento pela BD)
-            consulta.setString(2, objeto.getNome());
-            consulta.setString(3, objeto.getApelido());
-            consulta.setString(4, objeto.getCpf());
-            consulta.setString(5, objeto.getTelefone());
-            consulta.setString(6, objeto.getCelular());
-            consulta.setString(7, objeto.getEndereco());
-            consulta.setInt(8, objeto.getEstado());
+            PreparedStatement pst = cn.prepareStatement("Insert Into tb_cliente Values(?,?,?,?,?,?,?,?)");
+            pst.setInt(1, 0);//id(Auto_Incremmento pela BD)
+            pst.setString(2, objeto.getNome());
+            pst.setString(3, objeto.getApelido());
+            pst.setString(4, objeto.getCpf());
+            pst.setString(5, objeto.getTelefone());
+            pst.setString(6, objeto.getCelular());
+            pst.setString(7, objeto.getEndereco());
+            pst.setInt(8, objeto.getEstado());
 
-            if (consulta.executeUpdate() > 0) {
+            if (pst.executeUpdate() > 0) {
                 resposta = true;
             }
             cn.close();
