@@ -192,7 +192,6 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
             txt_Usuario.setBackground(Color.red);
             txt_password.setBackground(Color.red);
             txt_telefone.setBackground(Color.red);
-
         }
         this.limparCampos();
     }//GEN-LAST:event_jButton_SalvarClienteActionPerformed
