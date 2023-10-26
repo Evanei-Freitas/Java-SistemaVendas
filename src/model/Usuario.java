@@ -26,6 +26,18 @@ public class Usuario {
         this.estado = 0;
     }
 
+    public Usuario(int idUsuario, String nome, String apelido, String usuario, String password, String telefone, int estado) {
+        this.idUsuario = idUsuario;
+        this.nome = nome;
+        this.apelido = apelido;
+        this.usuario = usuario;
+        this.password = password;
+        this.telefone = telefone;
+        this.estado = estado;
+    }
+    
+    
+
     //Sets e Geters
     public int getIdUsuario() {
         return idUsuario;
