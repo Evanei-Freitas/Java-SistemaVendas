@@ -92,11 +92,6 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 80, -1));
 
         txt_telefone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txt_telefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_telefoneActionPerformed(evt);
-            }
-        });
         jPanel1.add(txt_telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 240, -1));
 
         txt_Cpf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -146,21 +141,20 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         Usuario usuario = new Usuario();
         Controller_Usuario controllerUsuario = new Controller_Usuario();
 
-       
         //Validação dos Campos do Formulário.
         if (!txt_Cpf.getText().isEmpty() && !txt_Apelido.getText().isEmpty() && !txt_Usuario.getText().isEmpty()
                 && !txt_password.getText().isEmpty() && !txt_telefone.getText().isEmpty()) {
-            
+
             //Verifico pelo CPF se já tem algum Usuario cadastrado 
             if (!controllerUsuario.existeUsuario(txt_Cpf.getText().trim())) {
                 usuario.setNome(txt_Nome.getText().trim());
                 usuario.setCpf(txt_Cpf.getText().trim());
                 usuario.setApelido(txt_Apelido.getText().trim());
-                usuario.setUsuario(txt_Usuario.getText().trim());   
+                usuario.setUsuario(txt_Usuario.getText().trim());
                 usuario.setPassword(txt_password.getText().trim());
                 usuario.setTelefone(txt_telefone.getText().trim());
                 usuario.setEstado(1);
-    
+
                 //Aqui envio as informações que serão salvas.
                 if (controllerUsuario.SalvarUsuario(usuario)) {
                     JOptionPane.showMessageDialog(null, "Usuario Salvo com Sucesso!");
@@ -196,10 +190,6 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         this.limparCampos();
     }//GEN-LAST:event_jButton_SalvarClienteActionPerformed
 
-    private void txt_telefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_telefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_telefoneActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_SalvarCliente;
@@ -222,9 +212,9 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     /**
-     ***************************************************************
+     ***************************************************************************
      * Método para limpar Campos.
-     * **************************************************************
+     * *************************************************************************
      */
     private void limparCampos() {
         txt_Nome.setText("");

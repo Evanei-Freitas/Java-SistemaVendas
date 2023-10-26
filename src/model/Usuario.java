@@ -28,30 +28,17 @@ public class Usuario {
         this.estado = 0;
     }
 
-<<<<<<< HEAD
     public Usuario(int idUsuario, String nome, String cpf, String apelido, String usuario, String password, String telefone, int estado) {
         this.idUsuario = idUsuario;
         this.nome = nome;
         this.cpf = cpf;
-=======
-    public Usuario(int idUsuario, String nome, String apelido, String usuario, String password, String telefone, int estado) {
-        this.idUsuario = idUsuario;
-        this.nome = nome;
->>>>>>> 995c5c1bf78d6bee5580e743243a961dc03efed9
         this.apelido = apelido;
         this.usuario = usuario;
         this.password = password;
         this.telefone = telefone;
         this.estado = estado;
     }
-<<<<<<< HEAD
 
-=======
-    
-    
-
-    //Sets e Geters
->>>>>>> 995c5c1bf78d6bee5580e743243a961dc03efed9
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -115,5 +102,7 @@ public class Usuario {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+
+    
 
 }
