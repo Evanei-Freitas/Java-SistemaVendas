@@ -1,6 +1,13 @@
 package view;
 
+import controller.Controller_Cliente;
+import controller.Controller_Usuario;
+import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JOptionPane;
+import model.Cliente;
+import model.Usuario;
+import model.Usuario;
 
 /**
  *
@@ -29,12 +36,14 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txt_NomeUsuario = new javax.swing.JTextField();
-        txt_LoginUsuario = new javax.swing.JTextField();
-        txt_telefoneUsuario = new javax.swing.JTextField();
-        txt_SenhaUsuario = new javax.swing.JPasswordField();
-        txt_ApelidoUsuario = new javax.swing.JTextField();
+        txt_telefone = new javax.swing.JTextField();
+        txt_Cpf = new javax.swing.JTextField();
+        txt_Usuario = new javax.swing.JTextField();
+        txt_Nome = new javax.swing.JTextField();
+        txt_password = new javax.swing.JPasswordField();
+        txt_Apelido = new javax.swing.JTextField();
         jButton_SalvarCliente = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -56,40 +65,54 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Apelido:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 120, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Nome :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 80, -1));
+        jLabel3.setText("CPF:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 80, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Usuário:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 80, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 80, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Nome :");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 80, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("telefone:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 80, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 80, -1));
 
-        txt_NomeUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txt_NomeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 240, -1));
+        txt_telefone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txt_telefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_telefoneActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 240, -1));
 
-        txt_LoginUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txt_LoginUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 240, -1));
+        txt_Cpf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txt_Cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 240, -1));
 
-        txt_telefoneUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txt_telefoneUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 265, 240, -1));
+        txt_Usuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txt_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 240, -1));
 
-        txt_SenhaUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txt_SenhaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 240, -1));
+        txt_Nome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txt_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 240, -1));
 
-        txt_ApelidoUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txt_ApelidoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 240, -1));
+        txt_password.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 240, -1));
+
+        txt_Apelido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txt_Apelido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 240, -1));
 
         jButton_SalvarCliente.setBackground(new java.awt.Color(0, 204, 204));
         jButton_SalvarCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -99,7 +122,7 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
                 jButton_SalvarClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton_SalvarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 292, 240, 40));
+        jPanel1.add(jButton_SalvarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 240, 40));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario2.png"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 310, 400));
@@ -108,7 +131,7 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("senha:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 80, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 80, -1));
 
         jLabel1_Walpapper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo3.jpg"))); // NOI18N
         jPanel1.add(jLabel1_Walpapper, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 730, 450));
@@ -119,8 +142,64 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_SalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarClienteActionPerformed
-        
+        // Código do Botão Salvar Usuario.
+        Usuario usuario = new Usuario();
+        Controller_Usuario controllerUsuario = new Controller_Usuario();
+
+       
+        //Validação dos Campos do Formulário.
+        if (!txt_Cpf.getText().isEmpty() && !txt_Apelido.getText().isEmpty() && !txt_Usuario.getText().isEmpty()
+                && !txt_password.getText().isEmpty() && !txt_telefone.getText().isEmpty()) {
+            
+            //Verifico pelo CPF se já tem algum Usuario cadastrado 
+            if (!controllerUsuario.existeUsuario(txt_Cpf.getText().trim())) {
+                usuario.setNome(txt_Nome.getText().trim());
+                usuario.setCpf(txt_Cpf.getText().trim());
+                usuario.setApelido(txt_Apelido.getText().trim());
+                usuario.setUsuario(txt_Usuario.getText().trim());   
+                usuario.setPassword(txt_password.getText().trim());
+                usuario.setTelefone(txt_telefone.getText().trim());
+                usuario.setEstado(1);
+    
+                //Aqui envio as informações que serão salvas.
+                if (controllerUsuario.SalvarUsuario(usuario)) {
+                    JOptionPane.showMessageDialog(null, "Usuario Salvo com Sucesso!");
+                    txt_Nome.setBackground(Color.white);
+                    txt_Cpf.setBackground(Color.white);
+                    txt_Apelido.setBackground(Color.white);
+                    txt_Usuario.setBackground(Color.white);
+                    txt_password.setBackground(Color.white);
+                    txt_telefone.setBackground(Color.white);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Erro! Esse Cpf já está Cadastrado no sistema!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Atenção: Erro! Cpf já cadastrado no sistema!!");
+                txt_Nome.setBackground(Color.white);
+                txt_Cpf.setBackground(Color.white);
+                txt_Apelido.setBackground(Color.white);
+                txt_Usuario.setBackground(Color.white);
+                txt_password.setBackground(Color.white);
+                txt_telefone.setBackground(Color.white);
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
+            txt_Nome.setBackground(Color.red);
+            txt_Cpf.setBackground(Color.red);
+            txt_Apelido.setBackground(Color.red);
+            txt_Usuario.setBackground(Color.red);
+            txt_password.setBackground(Color.red);
+            txt_telefone.setBackground(Color.red);
+
+        }
+        this.limparCampos();
     }//GEN-LAST:event_jButton_SalvarClienteActionPerformed
+
+    private void txt_telefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_telefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_telefoneActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -130,15 +209,17 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txt_ApelidoUsuario;
-    private javax.swing.JTextField txt_LoginUsuario;
-    private javax.swing.JTextField txt_NomeUsuario;
-    private javax.swing.JPasswordField txt_SenhaUsuario;
-    private javax.swing.JTextField txt_telefoneUsuario;
+    private javax.swing.JTextField txt_Apelido;
+    private javax.swing.JTextField txt_Cpf;
+    private javax.swing.JTextField txt_Nome;
+    private javax.swing.JTextField txt_Usuario;
+    private javax.swing.JPasswordField txt_password;
+    private javax.swing.JTextField txt_telefone;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -147,11 +228,13 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
      * **************************************************************
      */
     private void limparCampos() {
-        txt_NomeUsuario.setText("");
-        txt_ApelidoUsuario.setText("");
-        txt_LoginUsuario.setText("");
-        txt_telefoneUsuario.setText("");
-       
+        txt_Nome.setText("");
+        txt_Cpf.setText("");
+        txt_Apelido.setText("");
+        txt_Usuario.setText("");
+        txt_password.setText("");
+        txt_telefone.setText("");
+
     }
 
 }

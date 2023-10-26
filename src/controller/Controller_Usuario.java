@@ -2,11 +2,14 @@ package controller;
 
 import conexao.Conexao;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import model.Usuario;
+import model.Usuario;
+
 
 /**
  *
@@ -36,5 +39,65 @@ public class Controller_Usuario {
 
         return resposta;
     }
+    
+    
+    
+     /**
+     * **********************************************************************
+     * Método para Gravar(Salvar) Usuario no Banco de Dados.
+     * **********************************************************************
+     */
+    public boolean SalvarUsuario(Usuario objeto) {
+        boolean resposta = false;
+        Connection cn = Conexao.conectar();
+        try {
+            PreparedStatement pst = cn.prepareStatement("Insert Into tb_usuario Values(?,?,?,?,?,?,?,?)");
+            pst.setInt(1, 0);//id(Auto_Incremmento pela BD)
+            pst.setString(2, objeto.getNome());
+            pst.setString(3, objeto.getCpf());
+            pst.setString(4, objeto.getApelido());
+            pst.setString(5, objeto.getUsuario());
+            pst.setString(6, objeto.getPassword());
+            pst.setString(7, objeto.getTelefone());
+            pst.setInt(8, objeto.getEstado());
+
+            if (pst.executeUpdate() > 0) {
+                resposta = true;
+            }
+            cn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao tentar Salvar o Usuario no Banco de Dados!" + e);
+        }
+        return resposta;
+    }
+    
+    
+     /**
+     * *
+     * ***********************************************************************
+     * Metodo para Verificar se Existe o Usuário Salvo no Banco de Dados.
+     * ***********************************************************************
+     */
+    public boolean existeUsuario(String cpf) {
+        boolean resposta = false;
+        String sql = "Select cpf from tb_usuario Where cpf = '" + cpf + "'";
+        Statement stm;
+        try {
+            Connection cn = Conexao.conectar();
+            stm = cn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+
+            while (rs.next()) {
+                resposta = true;
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro Cpf já cadastrado no sistema!");
+        }
+        return resposta;
+    }
+    
+    
+    
 
 }

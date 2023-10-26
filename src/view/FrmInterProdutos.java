@@ -107,13 +107,13 @@ public class FrmInterProdutos extends javax.swing.JInternalFrame {
         jPanel1.add(txt_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 240, -1));
 
         txt_Preco.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txt_Preco, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 180, -1));
+        jPanel1.add(txt_Preco, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 240, -1));
 
         txt_Descricao.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel1.add(txt_Descricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 240, -1));
 
         txt_Quantidade.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txt_Quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 180, -1));
+        jPanel1.add(txt_Quantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 240, -1));
 
         jComboBox_iva.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jComboBox_iva.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Juros", "No grava iva", "12% ", "14%", "10%", "20%", " ", " " }));
@@ -133,8 +133,8 @@ public class FrmInterProdutos extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jButton_SalvarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 240, 40));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ProdutoFundo.jpeg"))); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 220, 250));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ProdutosImage.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 280, 270));
 
         jLabel1_Walpapper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo3.jpg"))); // NOI18N
         jPanel1.add(jLabel1_Walpapper, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 730, 450));

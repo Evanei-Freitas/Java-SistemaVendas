@@ -113,7 +113,7 @@ public class FrmInterCliente extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jButton_SalvarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 240, 40));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clientes3.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/NovoCliente.png"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 310, 400));
 
         txt_telefone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

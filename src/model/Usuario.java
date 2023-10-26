@@ -9,6 +9,7 @@ public class Usuario {
     //Atributos
     private int idUsuario;
     private String nome;
+    private String cpf;
     private String apelido;
     private String usuario;
     private String password;
@@ -19,6 +20,7 @@ public class Usuario {
     public Usuario() {
         this.idUsuario = 0;
         this.nome = "";
+        this.cpf = "";
         this.apelido = "";
         this.usuario = "";
         this.password = "";
@@ -26,7 +28,17 @@ public class Usuario {
         this.estado = 0;
     }
 
-    //Sets e Geters
+    public Usuario(int idUsuario, String nome, String cpf, String apelido, String usuario, String password, String telefone, int estado) {
+        this.idUsuario = idUsuario;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.apelido = apelido;
+        this.usuario = usuario;
+        this.password = password;
+        this.telefone = telefone;
+        this.estado = estado;
+    }
+
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -41,6 +53,14 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getApelido() {
