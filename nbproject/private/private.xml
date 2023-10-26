@@ -5,7 +5,11 @@
         <group>
             <file>file:/C:/SistemaVendas/src/controller/Controller_Usuario.java</file>
             <file>file:/C:/SistemaVendas/src/view/FrmInterUsuario.java</file>
+<<<<<<< HEAD
             <file>file:/C:/SistemaVendas/src/model/Model_Usuario.java</file>
+=======
+            <file>file:/C:/SistemaVendas/src/model/Usuario.java</file>
+>>>>>>> 995c5c1bf78d6bee5580e743243a961dc03efed9
         </group>
     </open-files>
 </project-private>
