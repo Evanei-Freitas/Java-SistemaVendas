@@ -1,6 +1,7 @@
 package view;
 
 import conexao.Conexao;
+import controller.Controller_Cliente;
 import controller.Controller_Usuario;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
@@ -15,6 +16,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import model.Cliente;
+import model.Usuario;
 
 /**
  *
@@ -130,36 +133,36 @@ public class FrmInterGerenciarUsuarios extends javax.swing.JInternalFrame {
         jLabel_Nome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel_Nome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_Nome.setText("Nome:");
-        jPanel3.add(jLabel_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 60, -1));
+        jPanel3.add(jLabel_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 60, -1));
 
         txt_Usuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel3.add(txt_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 200, -1));
+        jPanel3.add(txt_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 200, -1));
 
         jLabel_Apelido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel_Apelido.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_Apelido.setText("Apelido:");
-        jPanel3.add(jLabel_Apelido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 90, -1));
+        jPanel3.add(jLabel_Apelido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 90, -1));
 
         jLabel_Endereco.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel_Endereco.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel_Endereco.setText("Endereço:");
-        jPanel3.add(jLabel_Endereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 90, -1));
+        jLabel_Endereco.setText("Senha:");
+        jPanel3.add(jLabel_Endereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 90, -1));
 
         txt_Apelido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel3.add(txt_Apelido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 200, -1));
+        jPanel3.add(txt_Apelido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 200, -1));
 
         txt_nome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel3.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 200, -1));
+        jPanel3.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 200, -1));
 
         jLabel_Cpf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel_Cpf.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_Cpf.setText("CPF:");
-        jPanel3.add(jLabel_Cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 60, -1));
+        jPanel3.add(jLabel_Cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 60, -1));
 
         jLabel_Celular.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel_Celular.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_Celular.setText("Usuario:");
-        jPanel3.add(jLabel_Celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 80, -1));
+        jPanel3.add(jLabel_Celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 80, -1));
 
         txt_Cpf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_Cpf.addActionListener(new java.awt.event.ActionListener() {
@@ -167,18 +170,18 @@ public class FrmInterGerenciarUsuarios extends javax.swing.JInternalFrame {
                 txt_CpfActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_Cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 200, -1));
+        jPanel3.add(txt_Cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 200, -1));
 
         jLabel_Telefone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel_Telefone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_Telefone.setText("Telefone:");
-        jPanel3.add(jLabel_Telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 90, -1));
+        jPanel3.add(jLabel_Telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 90, -1));
 
         txt_Telefone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel3.add(txt_Telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 200, -1));
+        jPanel3.add(txt_Telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 200, -1));
 
         txt_Password.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel3.add(txt_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 200, -1));
+        jPanel3.add(txt_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 200, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 870, 130));
 
@@ -192,7 +195,38 @@ public class FrmInterGerenciarUsuarios extends javax.swing.JInternalFrame {
 
     private void jButton_AtualizarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AtualizarUsuariosActionPerformed
         //Código do botão para atualizar Cliente.
+        //Validando os Campos.
+        if (txt_nome.getText().isEmpty() && txt_Cpf.getText().isEmpty() && txt_Apelido.getText().isEmpty()
+                && txt_Usuario.getText().isEmpty() && txt_Password.getText().isEmpty() && txt_Telefone.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha Todos os Campos.");
+        } else {
+            //Aqui Instâncio as duas Camadas(Model e Controller)Para poder usa-las.
+            Usuario usuario = new Usuario();
+            Controller_Usuario controllerUsuario = new Controller_Usuario();
 
+            /**
+             * *
+             * Aqui Seto os Dados que serão preenchodos nos Campos de Textos do
+             * Formulário para ser atualizados - (FrmInterClientes).
+             */
+            usuario.setNome(txt_nome.getText().trim());
+            usuario.setCpf(txt_Cpf.getText().trim());
+            usuario.setApelido(txt_Apelido.getText().trim());
+            usuario.setUsuario(txt_Usuario.getText().trim());
+            usuario.setPassword(txt_Password.getText().trim());
+            usuario.setTelefone(txt_Telefone.getText().trim());
+            
+
+            //Aqui chamo o Método atualizarCliente que esta no(controllerCliente). 
+            if (controllerUsuario.atualizarUsuario(usuario, idUsuario)) {
+                JOptionPane.showMessageDialog(null, "Usuario Atualizado com Sucesso!");
+                this.carregarTabelaUsuario();
+                this.limpar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao Tentar Atualizar os Dados do Usuario!");
+            }
+
+        }
 
     }//GEN-LAST:event_jButton_AtualizarUsuariosActionPerformed
 
@@ -283,7 +317,7 @@ public class FrmInterGerenciarUsuarios extends javax.swing.JInternalFrame {
             model.addColumn("Nº");//ID
             model.addColumn("nome");
             model.addColumn("cpf");
-            model.addColumn("apelido");        
+            model.addColumn("apelido");
             model.addColumn("usuario");
             model.addColumn("password");
             model.addColumn("telefone");
@@ -331,11 +365,11 @@ public class FrmInterGerenciarUsuarios extends javax.swing.JInternalFrame {
             if (rs.next()) {
                 txt_nome.setText(rs.getString("nome"));
                 txt_Cpf.setText(rs.getString("cpf"));
-                txt_Apelido.setText(rs.getString("apelido"));               
+                txt_Apelido.setText(rs.getString("apelido"));
                 txt_Usuario.setText(rs.getString("usuario"));
                 txt_Password.setText(rs.getString("password"));
                 txt_Telefone.setText(rs.getString("telefone"));
-                
+
             }
             con.close();
         } catch (SQLException e) {
