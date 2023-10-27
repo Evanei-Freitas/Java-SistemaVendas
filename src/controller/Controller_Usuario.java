@@ -109,12 +109,12 @@ public class Controller_Usuario {
         Connection cn = Conexao.conectar();
         try {
             PreparedStatement pst = cn.prepareStatement("Update tb_usuario set nome = ?, cpf = ?, apelido = ?, "
-                    + "usuario = ?, password = ?, telefone = ?  Where idUsuario ='" + idUsuario + "'");
+                    + "usuario = ?, password = ?, telefone = ?, estado = ? Where idUsuario ='" + idUsuario + "'");
             pst.setString(1, objeto.getNome());
-            pst.setString(2, objeto.getNome());
-            pst.setString(3, objeto.getCpf());
-            pst.setString(4, objeto.getApelido());
-            pst.setString(5, objeto.getUsuario());
+            pst.setString(2, objeto.getCpf());
+            pst.setString(3, objeto.getApelido());
+            pst.setString(4, objeto.getUsuario());
+            pst.setString(5, objeto.getPassword());
             pst.setString(6, objeto.getTelefone());
             pst.setInt(7, objeto.getEstado());
 
@@ -123,7 +123,7 @@ public class Controller_Usuario {
             }
             cn.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao tentar Atualizar Usuário no Sistema!" + e);
+            JOptionPane.showMessageDialog(null, "Erro ao tentar Atualizar Usuário no Sistema!" + e.getMessage());
         }
         return resposta;
     }

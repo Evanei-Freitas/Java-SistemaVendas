@@ -363,6 +363,9 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMenuItem_gerenciarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gerenciarUsuarioActionPerformed
         //Código para Chamar o Formulário Gerenciamento de Usuario.
+        FrmInterGerenciarUsuarios frmgerenciarUsuario = new FrmInterGerenciarUsuarios();
+        jDesktopPane_menu.add(frmgerenciarUsuario);
+        frmgerenciarUsuario.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem_gerenciarUsuarioActionPerformed
 
