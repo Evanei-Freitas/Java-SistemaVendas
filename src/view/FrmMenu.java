@@ -82,7 +82,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
         jMenu1.setText("Usuário");
-        jMenu1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jMenu1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu1.setPreferredSize(new java.awt.Dimension(150, 50));
 
         jMenuItem_gerenciarUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -111,7 +111,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/producto.png"))); // NOI18N
         jMenu2.setText("Produto");
-        jMenu2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jMenu2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu2.setPreferredSize(new java.awt.Dimension(150, 50));
 
         jMenuItem_novoProduto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -151,7 +151,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente.png"))); // NOI18N
         jMenu4.setText("Cliente");
-        jMenu4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jMenu4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu4.setPreferredSize(new java.awt.Dimension(150, 50));
 
         jMenuItem_novoCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -180,7 +180,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/categorias.png"))); // NOI18N
         jMenu5.setText("Categoria");
-        jMenu5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jMenu5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu5.setPreferredSize(new java.awt.Dimension(150, 50));
 
         jMenuItem_novaCategoria.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -209,7 +209,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/carrito.png"))); // NOI18N
         jMenu6.setText("Faturar");
-        jMenu6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jMenu6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu6.setPreferredSize(new java.awt.Dimension(150, 50));
 
         jMenuItem_novaVenda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -228,7 +228,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporte1.png"))); // NOI18N
         jMenu7.setText("Relatorios");
-        jMenu7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jMenu7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu7.setPreferredSize(new java.awt.Dimension(150, 50));
 
         jMenuItem_relatorioCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -259,7 +259,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/historial1.png"))); // NOI18N
         jMenu8.setText("Registro");
-        jMenu8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jMenu8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu8.setPreferredSize(new java.awt.Dimension(150, 50));
 
         jMenuItem_verRegistro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -277,7 +277,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
         jMenu9.setText("Sair");
-        jMenu9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jMenu9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu9.setPreferredSize(new java.awt.Dimension(200, 50));
 
         jMenuItem_sairSistema.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

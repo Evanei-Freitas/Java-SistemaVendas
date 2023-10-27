@@ -7,9 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import model.Cliente;
 import model.Usuario;
-import model.Usuario;
-
 
 /**
  *
@@ -17,32 +16,7 @@ import model.Usuario;
  */
 public class Controller_Usuario {
 
-    //Método para inicializar a sessão.
-    public boolean loginUser(Usuario objeto) {
-        boolean resposta = false;
-        Connection cn = Conexao.conectar();
-        String sql = "select usuario, password from tb_usuario where usuario = '"
-                + objeto.getUsuario() + "' and password = '" + objeto.getPassword() + "'";
-        Statement st;
-        try {
-            st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-
-            while (rs.next()) {
-                resposta = true;
-            }
-
-        } catch (SQLException e) {
-            //System.out.println("Erro! erro ao tentar inicializar o sessão" + e);
-            JOptionPane.showMessageDialog(null, "Erro ao inicializar a sessão." + e);
-        }
-
-        return resposta;
-    }
-    
-    
-    
-     /**
+    /**
      * **********************************************************************
      * Método para Gravar(Salvar) Usuario no Banco de Dados.
      * **********************************************************************
@@ -66,13 +40,12 @@ public class Controller_Usuario {
             }
             cn.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao tentar Salvar o Usuario no Banco de Dados!" + e);
+            JOptionPane.showMessageDialog(null, "Erro ao tentar Salvar o Usuario no sistema!" + e);
         }
         return resposta;
     }
-    
-    
-     /**
+
+    /**
      * *
      * ***********************************************************************
      * Metodo para Verificar se Existe o Usuário Salvo no Banco de Dados.
@@ -92,12 +65,91 @@ public class Controller_Usuario {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro Cpf já cadastrado no sistema!");
+            JOptionPane.showMessageDialog(null, "Cpf já cadastrado no sistema!");
         }
         return resposta;
     }
-    
-    
-    
+
+    /**
+     * *
+     ***************************************************************************
+     * Método para Login inicializar a sessão.
+     * *************************************************************************
+     */
+    public boolean loginUser(Usuario objeto) {
+        boolean resposta = false;
+        Connection cn = Conexao.conectar();
+        String sql = "select usuario, password from tb_usuario where usuario = '"
+                + objeto.getUsuario() + "' and password = '" + objeto.getPassword() + "'";
+        Statement st;
+        try {
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                resposta = true;
+            }
+
+        } catch (SQLException e) {
+            //System.out.println("Erro! erro ao tentar inicializar o sessão" + e);
+            JOptionPane.showMessageDialog(null, "Erro ao inicializar a sessão." + e);
+        }
+
+        return resposta;
+    }
+
+    /**
+     * *
+     * **********************************************************************
+     * Método para Atualizar Cliente no Banco de Dados.
+     * **********************************************************************
+     */
+    public boolean atualizarUsuario(Usuario objeto, int idUsuario) {
+        boolean resposta = false;
+        Connection cn = Conexao.conectar();
+        try {
+            PreparedStatement pst = cn.prepareStatement("Update tb_usuario set nome = ?, cpf = ?, apelido = ?, "
+                    + "usuario = ?, password = ?, telefone = ?  Where idUsuario ='" + idUsuario + "'");
+            pst.setString(1, objeto.getNome());
+            pst.setString(2, objeto.getNome());
+            pst.setString(3, objeto.getCpf());
+            pst.setString(4, objeto.getApelido());
+            pst.setString(5, objeto.getUsuario());
+            pst.setString(6, objeto.getTelefone());
+            pst.setInt(7, objeto.getEstado());
+
+            if (pst.executeUpdate() > 0) {
+                resposta = true;
+            }
+            cn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao tentar Atualizar Usuário no Sistema!" + e);
+        }
+        return resposta;
+    }
+
+    /**
+     * *
+     * **********************************************************************
+     * Método para Excluir Cliente.
+     * **********************************************************************
+     */
+    public boolean excluirUsuario(int idUsuario) {
+        boolean resposta = false;
+        Connection cn = Conexao.conectar();
+        try {
+            PreparedStatement pst = cn.prepareStatement(
+                    "delete From tb_usuario Where idUsuario='" + idUsuario + "'");
+            pst.executeUpdate();
+            if (pst.executeUpdate() > 0) {
+                resposta = true;
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro ao tentar Excluir Usuário no Sistema!" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao tentar Excluir Usuário no Sistema!" + e.getMessage());
+        }
+        return resposta;
+    }
 
 }

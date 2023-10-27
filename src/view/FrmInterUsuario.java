@@ -1,12 +1,9 @@
 package view;
 
-import controller.Controller_Cliente;
 import controller.Controller_Usuario;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import model.Cliente;
-import model.Usuario;
 import model.Usuario;
 
 /**
@@ -47,6 +44,7 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         jButton_SalvarCliente = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jCheckBoxVerSenha = new javax.swing.JCheckBox();
         jLabel1_Walpapper = new javax.swing.JLabel();
 
         setClosable(true);
@@ -117,7 +115,7 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
                 jButton_SalvarClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton_SalvarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 240, 40));
+        jPanel1.add(jButton_SalvarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 240, 40));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario2.png"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 310, 400));
@@ -127,6 +125,9 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("senha:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 80, -1));
+
+        jCheckBoxVerSenha.setText("Visualizaer senha digitada");
+        jPanel1.add(jCheckBoxVerSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 285, -1, -1));
 
         jLabel1_Walpapper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo3.jpg"))); // NOI18N
         jPanel1.add(jLabel1_Walpapper, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 730, 450));
@@ -138,14 +139,14 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
 
     private void jButton_SalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarClienteActionPerformed
         // Código do Botão Salvar Usuario.
-        Usuario usuario = new Usuario();
-        Controller_Usuario controllerUsuario = new Controller_Usuario();
-
         //Validação dos Campos do Formulário.
         if (!txt_Cpf.getText().isEmpty() && !txt_Apelido.getText().isEmpty() && !txt_Usuario.getText().isEmpty()
                 && !txt_password.getText().isEmpty() && !txt_telefone.getText().isEmpty()) {
+            //JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!");
 
             //Verifico pelo CPF se já tem algum Usuario cadastrado 
+            Usuario usuario = new Usuario();
+            Controller_Usuario controllerUsuario = new Controller_Usuario();
             if (!controllerUsuario.existeUsuario(txt_Cpf.getText().trim())) {
                 usuario.setNome(txt_Nome.getText().trim());
                 usuario.setCpf(txt_Cpf.getText().trim());
@@ -166,10 +167,10 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
                     txt_telefone.setBackground(Color.white);
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Erro! Esse Cpf já está Cadastrado no sistema!");
+                    JOptionPane.showMessageDialog(null, "Atenção: Cpf já cadastrado no sistema!");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Atenção: Erro! Cpf já cadastrado no sistema!!");
+                JOptionPane.showMessageDialog(null, "Atenção: Cpf já cadastrado no sistema!");
                 txt_Nome.setBackground(Color.white);
                 txt_Cpf.setBackground(Color.white);
                 txt_Apelido.setBackground(Color.white);
@@ -193,6 +194,7 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_SalvarCliente;
+    private javax.swing.JCheckBox jCheckBoxVerSenha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1_Walpapper;
     private javax.swing.JLabel jLabel2;
