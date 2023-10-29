@@ -41,10 +41,9 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         txt_Nome = new javax.swing.JTextField();
         txt_password = new javax.swing.JPasswordField();
         txt_Apelido = new javax.swing.JTextField();
-        jButton_SalvarCliente = new javax.swing.JButton();
+        jButton_SalvarUsuario = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jCheckBoxVerSenha = new javax.swing.JCheckBox();
         jLabel1_Walpapper = new javax.swing.JLabel();
 
         setClosable(true);
@@ -107,15 +106,15 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         txt_Apelido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel1.add(txt_Apelido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 240, -1));
 
-        jButton_SalvarCliente.setBackground(new java.awt.Color(0, 204, 204));
-        jButton_SalvarCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_SalvarCliente.setText("Salvar");
-        jButton_SalvarCliente.addActionListener(new java.awt.event.ActionListener() {
+        jButton_SalvarUsuario.setBackground(new java.awt.Color(0, 204, 204));
+        jButton_SalvarUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_SalvarUsuario.setText("Salvar");
+        jButton_SalvarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_SalvarClienteActionPerformed(evt);
+                jButton_SalvarUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton_SalvarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 240, 40));
+        jPanel1.add(jButton_SalvarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 240, 40));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario2.png"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 310, 400));
@@ -126,9 +125,6 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         jLabel9.setText("senha:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 80, -1));
 
-        jCheckBoxVerSenha.setText("Visualizaer senha digitada");
-        jPanel1.add(jCheckBoxVerSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 285, -1, -1));
-
         jLabel1_Walpapper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo3.jpg"))); // NOI18N
         jPanel1.add(jLabel1_Walpapper, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 730, 450));
 
@@ -137,7 +133,7 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_SalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarClienteActionPerformed
+    private void jButton_SalvarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarUsuarioActionPerformed
         // Código do Botão Salvar Usuario.
         //Validação dos Campos do Formulário.
         if (!txt_Cpf.getText().isEmpty() && !txt_Apelido.getText().isEmpty() && !txt_Usuario.getText().isEmpty()
@@ -189,12 +185,11 @@ public class FrmInterUsuario extends javax.swing.JInternalFrame {
             txt_telefone.setBackground(Color.red);
         }
         this.limparCampos();
-    }//GEN-LAST:event_jButton_SalvarClienteActionPerformed
+    }//GEN-LAST:event_jButton_SalvarUsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_SalvarCliente;
-    private javax.swing.JCheckBox jCheckBoxVerSenha;
+    private javax.swing.JButton jButton_SalvarUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1_Walpapper;
     private javax.swing.JLabel jLabel2;

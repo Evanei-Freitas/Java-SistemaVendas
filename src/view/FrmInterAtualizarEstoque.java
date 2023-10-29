@@ -51,7 +51,8 @@ public class FrmInterAtualizarEstoque extends javax.swing.JInternalFrame {
         jComboBox_Produto = new javax.swing.JComboBox<>();
         txt_QtdAtual = new javax.swing.JTextField();
         txt_QtdNova = new javax.swing.JTextField();
-        jButton_AtualizarEstoque = new javax.swing.JButton();
+        jButton_AlmentarEstoque = new javax.swing.JButton();
+        jButton_DiminuirEstoque = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 102, 102));
         setClosable(true);
@@ -103,16 +104,27 @@ public class FrmInterAtualizarEstoque extends javax.swing.JInternalFrame {
 
         jPanel_walppaper.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 50, 450, 170));
 
-        jButton_AtualizarEstoque.setBackground(new java.awt.Color(0, 102, 51));
-        jButton_AtualizarEstoque.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_AtualizarEstoque.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_AtualizarEstoque.setText("Atualizar Estoque");
-        jButton_AtualizarEstoque.addActionListener(new java.awt.event.ActionListener() {
+        jButton_AlmentarEstoque.setBackground(new java.awt.Color(0, 102, 51));
+        jButton_AlmentarEstoque.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_AlmentarEstoque.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_AlmentarEstoque.setText("Almentar Estoque");
+        jButton_AlmentarEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_AtualizarEstoqueActionPerformed(evt);
+                jButton_AlmentarEstoqueActionPerformed(evt);
             }
         });
-        jPanel_walppaper.add(jButton_AtualizarEstoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 223, 190, 50));
+        jPanel_walppaper.add(jButton_AlmentarEstoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 224, 190, 50));
+
+        jButton_DiminuirEstoque.setBackground(new java.awt.Color(0, 102, 51));
+        jButton_DiminuirEstoque.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_DiminuirEstoque.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_DiminuirEstoque.setText("Diminuir Estoque");
+        jButton_DiminuirEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_DiminuirEstoqueActionPerformed(evt);
+            }
+        });
+        jPanel_walppaper.add(jButton_DiminuirEstoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 223, 190, 50));
 
         getContentPane().add(jPanel_walppaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 310));
 
@@ -124,7 +136,7 @@ public class FrmInterAtualizarEstoque extends javax.swing.JInternalFrame {
         this.mostrarEstoque();
     }//GEN-LAST:event_jComboBox_ProdutoActionPerformed
 
-    private void jButton_AtualizarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AtualizarEstoqueActionPerformed
+    private void jButton_AlmentarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AlmentarEstoqueActionPerformed
         //Código Atualiz o Estoque do Produto.
 
         //Validação da Seleção do Produto
@@ -144,7 +156,7 @@ public class FrmInterAtualizarEstoque extends javax.swing.JInternalFrame {
 
                         estoqueNovo = estoqueAtual + estoqueNovo;
                         produto.setQuantidade(estoqueNovo);
-                        if (controllerProduto.atualizarEstoqueProduto(produto, idProduto)) {
+                        if (controllerProduto.almentarEstoqueProduto(produto, idProduto)) {
                             JOptionPane.showMessageDialog(null, "Estoque atualizado com sucesso!");
                             jComboBox_Produto.setSelectedItem("Selecione o produto:");
                             txt_QtdAtual.setText("");
@@ -167,11 +179,56 @@ public class FrmInterAtualizarEstoque extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Selecione um Produto!");
         }
 
-    }//GEN-LAST:event_jButton_AtualizarEstoqueActionPerformed
+    }//GEN-LAST:event_jButton_AlmentarEstoqueActionPerformed
+
+    private void jButton_DiminuirEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DiminuirEstoqueActionPerformed
+        // Código para diminuir o estoque
+        //Validação da Seleção do Produto
+        if (!jComboBox_Produto.getSelectedItem().equals("Selecione o Produto:")) {
+            //Validação do Campo Vazio.
+            if (!txt_QtdNova.getText().isEmpty()) {
+                //Validação para que os usuarios só utilizen caracteres numéricos.
+                boolean validacao = validacaoCaracteres(txt_QtdNova.getText().trim());
+                if (validacao == true) {
+                    //Validação se a quantidade é maior que zero.
+                    if (Integer.parseInt(txt_QtdNova.getText()) > 0) {
+
+                        Produto produto = new Produto();
+                        Controller_Produto controllerProduto = new Controller_Produto();
+                        int estoqueAtual = Integer.parseInt(txt_QtdAtual.getText().trim());
+                        int estoqueNovo = Integer.parseInt(txt_QtdNova.getText().trim());
+
+                        estoqueNovo = estoqueAtual - estoqueNovo;
+                        produto.setQuantidade(estoqueNovo);
+                        if (controllerProduto.diminuirEstoqueProduto(produto, idProduto)) {
+                            JOptionPane.showMessageDialog(null, "Estoque atualizado com sucesso!");
+                            jComboBox_Produto.setSelectedItem("Selecione o produto:");
+                            txt_QtdAtual.setText("");
+                            txt_QtdNova.setText("");
+                            this.carregarComboProdutos();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Erro ao tentar atualizar o estoque!");
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "A quantidade não pode ser Zero e nem negativa");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Por favor, digite um número e não uma letra.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Entre com uma nova quantidade para somar com o estoque do Produto!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um Produto!");
+        }
+        
+    }//GEN-LAST:event_jButton_DiminuirEstoqueActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_AtualizarEstoque;
+    private javax.swing.JButton jButton_AlmentarEstoque;
+    private javax.swing.JButton jButton_DiminuirEstoque;
     private javax.swing.JComboBox<String> jComboBox_Produto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2_Produto;

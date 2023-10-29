@@ -109,14 +109,14 @@ public class Controller_Usuario {
         Connection cn = Conexao.conectar();
         try {
             PreparedStatement pst = cn.prepareStatement("Update tb_usuario set nome = ?, cpf = ?, apelido = ?, "
-                    + "usuario = ?, password = ?, telefone = ?, estado = ? Where idUsuario ='" + idUsuario + "'");
+                    + "usuario = ?, password = ?, telefone = ? Where idUsuario ='" + idUsuario + "'");
             pst.setString(1, objeto.getNome());
             pst.setString(2, objeto.getCpf());
             pst.setString(3, objeto.getApelido());
             pst.setString(4, objeto.getUsuario());
             pst.setString(5, objeto.getPassword());
             pst.setString(6, objeto.getTelefone());
-            pst.setInt(7, objeto.getEstado());
+            
 
             if (pst.executeUpdate() > 0) {
                 resposta = true;

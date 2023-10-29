@@ -216,7 +216,6 @@ public class FrmInterGerenciarUsuarios extends javax.swing.JInternalFrame {
             usuario.setPassword(txt_Password.getText().trim());
             usuario.setTelefone(txt_Telefone.getText().trim());
             
-
             //Aqui chamo o Método atualizarCliente que esta no(controllerCliente). 
             if (controllerUsuario.atualizarUsuario(usuario, idUsuario)) {
                 JOptionPane.showMessageDialog(null, "Usuario Atualizado com Sucesso!");
@@ -293,7 +292,7 @@ public class FrmInterGerenciarUsuarios extends javax.swing.JInternalFrame {
         txt_Cpf.setText("");
         txt_Telefone.setText("");
         txt_Usuario.setText("");
-
+        txt_Password.setText("");
     }
 
     /**

@@ -50,8 +50,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem_gerenciarUsuario = new javax.swing.JMenuItem();
         jMenuItem_novoUsuario = new javax.swing.JMenuItem();
+        jMenuItem_gerenciarUsuario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem_novoProduto = new javax.swing.JMenuItem();
         jMenuItem_gerenciarProduto = new javax.swing.JMenuItem();
@@ -85,17 +85,6 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu1.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        jMenuItem_gerenciarUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem_gerenciarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
-        jMenuItem_gerenciarUsuario.setText("Gerenciar Usuarios");
-        jMenuItem_gerenciarUsuario.setPreferredSize(new java.awt.Dimension(180, 30));
-        jMenuItem_gerenciarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_gerenciarUsuarioActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem_gerenciarUsuario);
-
         jMenuItem_novoUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenuItem_novoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo-cliente.png"))); // NOI18N
         jMenuItem_novoUsuario.setText("Novo Usuario");
@@ -106,6 +95,17 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem_novoUsuario);
+
+        jMenuItem_gerenciarUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jMenuItem_gerenciarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
+        jMenuItem_gerenciarUsuario.setText("Gerenciar Usuarios");
+        jMenuItem_gerenciarUsuario.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem_gerenciarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_gerenciarUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem_gerenciarUsuario);
 
         jMenuBar1.add(jMenu1);
 
