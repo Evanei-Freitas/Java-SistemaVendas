@@ -21,7 +21,7 @@ public class Conexao {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Não foi possível conectar com o banco de dados!\n"
                     + "Verifique se o Banco de dados foi iniciado ou, se a senha e o login de conexão\n"
-                    + "estão corretos!");
+                    + "estão corretos!", "Conexão com o Banco de Dados!",JOptionPane.WARNING_MESSAGE);
             //System.out.println("Erro na conexão local:" + e);
         }
         return null;

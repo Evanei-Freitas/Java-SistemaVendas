@@ -6,7 +6,7 @@ package model;
  */
 public class Usuario {
 
-    //Atributos
+    //Atributos ou Variáveis de Instância
     private int idUsuario;
     private String nome;
     private String cpf;
@@ -16,7 +16,7 @@ public class Usuario {
     private String telefone;
     private int estado;
 
-    //Construtor da Classe
+    //Construtor da Classe Inicializados
     public Usuario() {
         this.idUsuario = 0;
         this.nome = "";
@@ -28,6 +28,7 @@ public class Usuario {
         this.estado = 0;
     }
 
+    //Construtor da Classe
     public Usuario(int idUsuario, String nome, String cpf, String apelido, String usuario, String password, String telefone, int estado) {
         this.idUsuario = idUsuario;
         this.nome = nome;

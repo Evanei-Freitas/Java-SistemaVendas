@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import model.Cliente;
 import model.Usuario;
 
 /**
@@ -19,7 +18,9 @@ public class Controller_Usuario {
     /**
      * **********************************************************************
      * Método para Gravar(Salvar) Usuario no Banco de Dados.
-     * **********************************************************************
+     *
+     **********************************************************************
+     * @param objeto
      */
     public boolean SalvarUsuario(Usuario objeto) {
         boolean resposta = false;
@@ -40,12 +41,12 @@ public class Controller_Usuario {
             }
             cn.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao tentar Salvar o Usuario no sistema!" + e);
+            JOptionPane.showMessageDialog(null, "Erro ao tentar Salvar o Usuario no sistema!", "Informação" + e, JOptionPane.INFORMATION_MESSAGE);
         }
         return resposta;
     }
 
-    /**
+    /*
      * *
      * ***********************************************************************
      * Metodo para Verificar se Existe o Usuário Salvo no Banco de Dados.
@@ -92,7 +93,7 @@ public class Controller_Usuario {
 
         } catch (SQLException e) {
             //System.out.println("Erro! erro ao tentar inicializar o sessão" + e);
-            JOptionPane.showMessageDialog(null, "Erro ao inicializar a sessão." + e);
+            JOptionPane.showMessageDialog(null, "Erro ao inicializar a sessão.","Erro: " + e, JOptionPane.WARNING_MESSAGE);
         }
 
         return resposta;
@@ -116,7 +117,6 @@ public class Controller_Usuario {
             pst.setString(4, objeto.getUsuario());
             pst.setString(5, objeto.getPassword());
             pst.setString(6, objeto.getTelefone());
-            
 
             if (pst.executeUpdate() > 0) {
                 resposta = true;

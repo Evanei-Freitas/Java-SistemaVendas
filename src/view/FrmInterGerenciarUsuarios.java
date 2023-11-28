@@ -1,7 +1,6 @@
 package view;
 
 import conexao.Conexao;
-import controller.Controller_Cliente;
 import controller.Controller_Usuario;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
@@ -16,7 +15,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import model.Cliente;
 import model.Usuario;
 
 /**
@@ -30,7 +28,7 @@ public class FrmInterGerenciarUsuarios extends javax.swing.JInternalFrame {
     public FrmInterGerenciarUsuarios() {
         initComponents();
         this.setSize(new Dimension(900, 500));
-        this.setTitle("Gerenciar Clientes");
+        this.setTitle("Gerenciar Usuários");
         this.carregarTabelaUsuario();
 
         //Inserir imagem de fundo(Backgraund)no Formulário 
